@@ -1,11 +1,12 @@
 provider "aws" {
- alias = "US"
-  region = var.aws_region
+  alias = "US"
+  shared_config_files = [var.tfc_aws_dynamic_credentials.default.shared_config_file]
 }
 
 provider "aws" {
   alias = "SG"
   shared_config_files = [var.tfc_aws_dynamic_credentials.aliases["SG"].shared_config_file]
+  region = var.aws_region
 }
 
 
