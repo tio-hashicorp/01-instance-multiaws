@@ -2,13 +2,13 @@ provider "aws" {
   shared_config_files = [var.tfc_aws_dynamic_credentials.default.shared_config_file]
   region = var.aws_region
 }
-
+/*
 provider "aws" {
   alias = "SG"
   shared_config_files = [var.tfc_aws_dynamic_credentials.aliases["SG"].shared_config_file]
   region = "ap-southeast-1"
 }
-
+*/
 
 data "aws_ami" "amazon_linux" {
   most_recent = true
