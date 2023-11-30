@@ -1,17 +1,16 @@
 provider "aws" {
-  alias = "US"
   shared_config_files = [var.tfc_aws_dynamic_credentials.default.shared_config_file]
+  region = var.aws_region
 }
 
 provider "aws" {
   alias = "SG"
   shared_config_files = [var.tfc_aws_dynamic_credentials.aliases["SG"].shared_config_file]
-  region = var.aws_region
+  region = "ap-southeast-1"
 }
 
 
 data "aws_ami" "amazon_linux" {
-  provider = aws.SG
   most_recent = true
   owners      = ["amazon"]
 
@@ -22,7 +21,6 @@ data "aws_ami" "amazon_linux" {
 }
 
 resource "aws_instance" "web" {
-  provider = aws.SG
   ami           = data.aws_ami.amazon_linux.id
   instance_type = var.instance_type
 
