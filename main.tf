@@ -11,7 +11,7 @@ provider "aws" {
   region = var.aws_region
   shared_config_files = [var.tfc_aws_dynamic_credentials.default.shared_config_file]
 }
-
+/*
 variable "tfc_aws_dynamic_credentials" {
   description = "Object containing AWS dynamic credentials configuration"
   type = object({
@@ -20,6 +20,7 @@ variable "tfc_aws_dynamic_credentials" {
     }) 
   })
 }
+*/
 
 /*
 provider "aws" {
